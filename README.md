@@ -17,6 +17,7 @@ curl
 python-flask
 python-virtualenv
 Tkinter
+pigpio
 ## Files to install  
 /etc/udev/rules.d/99-local.rules needs to be created or updated to include rules for StellarNet devices. Otherwise you would need to run as root to get USB access.
 ## Other Hardware  

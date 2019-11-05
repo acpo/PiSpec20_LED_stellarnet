@@ -6,7 +6,7 @@ The goal of this project was to replace the old Spec 20s in our teaching laborat
 The project was written to support undergraduate laboratories, so really this repository is for people looking for a frontend to run their spectrometer. However, the functionality of the project can readily be expanded to take advantage of the spectrometer features. This code takes care of collecting the spectra and controlling the light source, everything else is just manipulations in code. Simple changes in the code shift the interface from having lots of things chosen for you to needing to make lots of choices.
 ## PiSpec20_LED_stellarnet Requirements  
 I wrote this on a Raspberry Pi 3b+. For Windows or Mac you will need to make small changes to the code to deal with OS peculiarities. You will need to possess a Stellarnet spectrometer.  The LED requires building a small circuit to allow pulse width modulation of the LED for brightness control.  The schematic is below.  I built this on a Pi-topPROTO board which made it even easier.  
-![schematic of PWM circuit for Raspberry Pi](LEDCIRCIUT.png)
+![schematic of PWM circuit for Raspberry Pi](https://github.com/acpo/PiSpec20_LED_stellarnet/blob/master/LEDCIRCUIT.png)
 ## Libraries  
 pyusb 1.0.0a3
 numpy

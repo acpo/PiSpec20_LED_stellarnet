@@ -77,8 +77,8 @@ class Spec(tk.Tk):
         self.ax.add_line(self.line)
         self.ax.set_ylim(ymin*0.8, ymax*1.1)
         self.ax.set_xlim(self.xmin, self.xmax)
-        monitorwave = 600   #the value is likely to be in range on most spectrometers
-        
+        monitorwave = np.median(x)  #set monitor wavelength to middle of hardware range
+
         tk.Tk.__init__(self, *args, **kwargs)
         # tk.Tk.iconbitmap(self, default="clienticon.ico")  set window icon
         tk.Tk.wm_title(self, "StellarNet Spectrometer Control")
@@ -234,18 +234,18 @@ class Spec(tk.Tk):
         IntTimeTemp = self.entryint.get()
         if IntTimeTemp.isdigit() == True:
             if int(IntTimeTemp) > 65000:
-                msg = "The integration time must be 65000 ms or smaller."
+                msg = "The integration time must be 65000 ms or smaller.  You tried " +(IntTimeTemp)
                 self.setconfig(configurl)
                 popupmsg(msg)
             elif int(IntTimeTemp) < 1:
-                msg = "The integration time must be 1 ms or greater."
+                msg = "The integration time must be 1 ms or greater.  You tried " +(IntTimeTemp)
                 self.setconfig(configurl)
                 popupmsg(msg)
             else:
                 IntTime = int(float(IntTimeTemp))
                 self.setconfig(configurl)
         else:
-            msg = "Integration time must be an integer between 1 and 65000 ms."
+            msg = "Integration time must be an integer between 1 and 65000 ms.  You tried " +str(IntTimeTemp)
             self.setconfig(configurl)
             popupmsg(msg)
 
@@ -301,7 +301,7 @@ class Spec(tk.Tk):
             self.entryxmin.delete(0, 'end')
             self.entryxmin.insert(0, xmin)  #set text in box to unchanged value
 
-    def AbMode(self, event):
+   def AbMode(self, event):
         global AbMode
         if AbMode == 1:
             AbMode = 0
@@ -336,7 +336,6 @@ class Spec(tk.Tk):
             ax.set_ylim(ymin * 0.9, ymax * 1.1)
         else:
             pass
-
 
     def entryLED_return(self, event):
         global LEDpin, LEDfrequency, LEDdutycycle

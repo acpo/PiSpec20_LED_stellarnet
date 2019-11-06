@@ -8,21 +8,24 @@ The project was written to support undergraduate laboratories, so really this re
 I wrote this on a Raspberry Pi 3b+. For Windows or Mac you will need to make small changes to the code to deal with OS peculiarities. You will need to possess a Stellarnet spectrometer.  The LED requires building a small circuit to allow pulse width modulation of the LED for brightness control.  The schematic is below.  I built this on a Pi-topPROTO board which made it even easier.  
 ![schematic of PWM circuit for Raspberry Pi](https://github.com/acpo/PiSpec20_LED_stellarnet/blob/master/LEDCIRCUIT.png)
 ## Libraries  
-- pyusb 1.0.0a3
-- numpy
-- python-matplotlib
-- json
-- python-requests
+- pyusb 1.0.0a3  (Linux example:  sudo pip install pyusb==1.0.0a3)
+- numpy  
+- python-matplotlib  
+- json  
+- python-requests  
 - curl
-- python-flask
-- python-virtualenv
-- Tkinter
+- screen (if you want to hide the background processes)
+- python-flask  
+- python-virtualenv  (if you want to run this in a virtual environment)
+- Tkinter  
 - pigpio
 ## Files to install  
-- /etc/udev/rules.d/99-local.rules needs to be created or updated to include rules for StellarNet devices. Otherwise you would need to run as root to get USB access.
+- 99-local.rules  needs to be copied to '/etc/udev/rules.d/' or updated to include rules for StellarNet devices.  Otherwise 
+you would need to run as root to get USB access.
+- the rest of the files in PiSpec20_stellarnet should go into the same directory
 ## Other Hardware  
 - a USB connected StellarNet spectrometer
-- a PWM circuit.  The easiest way to do this would be on a Raspberry Pi since it has PWM pins ready to use.  Other prototyping platfoms (Arduino, etc.) could be adapted easily.  From a 'standard' PC, a PWM circuit can be attached by USB (Yocto, etc.)
+- a PWM circuit and LED.  The easiest way to do this would be on a Raspberry Pi since it has PWM pins ready to use.  Other prototyping platfoms (Arduino, etc.) could be adapted easily.  From a 'standard' PC, a PWM circuit can be attached by USB (Yocto, etc.).  An acceptable LED for "white light" illumination can cost as little as $2.00.
 ## How to Help  
 I don't write in Python for a living, nor particularly do a lot of programming. And it shows in the code. This is also a work in progress.
 If you wish to contribute please contact me.

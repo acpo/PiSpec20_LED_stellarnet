@@ -13,10 +13,10 @@ I wrote this on a Raspberry Pi 3b+. For Windows or Mac you will need to make sma
 - python-matplotlib  
 - pyusb 1.0.0a3  (Linux python 2 example:  sudo pip install pyusb==1.0.0a3)
 - numpy  
+- screen (if you want to hide the background processes)
 - python-matplotlib  
 - pigpio
 - stuff usually automatically included in python
-  - screen (if you want to hide the background processes)
   - json  
   - python-requests  
   - python-flask  

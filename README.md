@@ -11,14 +11,17 @@ I wrote this on a Raspberry Pi 3b+. For Windows or Mac you will need to make sma
 - pyusb 1.0.0a3  (Linux example:  sudo pip install pyusb==1.0.0a3)
 - numpy  
 - python-matplotlib  
-- json  
-- python-requests  
-- curl
-- screen (if you want to hide the background processes)
-- python-flask  
-- python-virtualenv  (if you want to run this in a virtual environment)
-- Tkinter  
+- pyusb 1.0.0a3  (Linux python 2 example:  sudo pip install pyusb==1.0.0a3)
+- numpy  
+- python-matplotlib  
 - pigpio
+- stuff usually automatically included in python
+  - screen (if you want to hide the background processes)
+  - json  
+  - python-requests  
+  - python-flask  
+  - python-virtualenv  (if you want to run this in a virtual environment)
+  - Tkinter  
 ## Files to install  
 - 99-local.rules  needs to be copied to '/etc/udev/rules.d/' or updated to include rules for StellarNet devices.  Otherwise 
 you would need to run as root to get USB access.

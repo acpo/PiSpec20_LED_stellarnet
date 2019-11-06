@@ -1,4 +1,3 @@
-curl
 json
 numpy
 pigpio

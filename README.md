@@ -23,6 +23,7 @@ I wrote this on a Raspberry Pi 3b+. For Windows or Mac you will need to make sma
 - 99-local.rules  needs to be copied to '/etc/udev/rules.d/' or updated to include rules for StellarNet devices.  Otherwise 
 you would need to run as root to get USB access.
 - the rest of the files in PiSpec20_stellarnet should go into the same directory
+- Issue `sudo chmod -x spectroweb.py` in the project directory if on a Linux system 
 ## Other Hardware  
 - a USB connected StellarNet spectrometer
 - a PWM circuit and LED.  The easiest way to do this would be on a Raspberry Pi since it has PWM pins ready to use.  Other prototyping platfoms (Arduino, etc.) could be adapted easily.  From a 'standard' PC, a PWM circuit can be attached by USB (Yocto, etc.).  An acceptable LED for "white light" illumination can cost as little as $2.00.

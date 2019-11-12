@@ -301,7 +301,7 @@ class Spec(tk.Tk):
             self.entryxmin.delete(0, 'end')
             self.entryxmin.insert(0, xmin)  #set text in box to unchanged value
 
-   def AbMode(self, event):
+    def AbMode(self, event):
         global AbMode
         if AbMode == 1:
             AbMode = 0

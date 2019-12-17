@@ -12,8 +12,17 @@
 #    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
-# 
+#
 
+### edits December 2019 ECN
+#   edited to make Python 3 compatible
+#   1) 'xrange' depricated in Python 3, replaced with 'range'
+#   2) 'range' in Python 2, replaced with 'list(range(...))' to create list objects
+#   3) 'print' updated to 'print()'
+#   4) 'payload = bytearray(line[9:9 + count*2].decode("hex"))'
+#      updated for python3 to the following line
+#      'payload = bytearray.fromhex(line[9:9 + count*2])'
+###
 """
 stellarnet - StellarNet USB spectrometer support.
 
@@ -166,11 +175,11 @@ class StellarNet(object):
         for key in kwargs:
             value = kwargs[key]
             if key == 'int_time':
-                if value not in xrange(2, 65536):
+                if value not in range(2, 65536):
                     raise ArgRangeError(key)
                 update_int_time = True
             elif key == 'x_timing':
-                if value not in xrange(1, 4):
+                if value not in range(1, 4):
                     raise ArgRangeError(key)
                 update_int_time = True
             elif key == 'x_smooth':
@@ -214,9 +223,9 @@ class StellarNet(object):
         scans_to_avg = self._config['scans_to_avg']
         if scans_to_avg > 1:
             summed = list(data)
-            for i in xrange(2, scans_to_avg + 1):
+            for i in range(2, scans_to_avg + 1):
                 data = self._smooth_data(self._read_data())
-                for j in xrange(len(summed)):
+                for j in range(len(summed)):
                     summed[j] = int(summed[j]*((i - 1)/float(i)) + data[j]/float(i))
             data = summed
             
@@ -229,7 +238,7 @@ class StellarNet(object):
         :param data: String; the string value to be set
         """
 
-        if address not in range(0x00, 0x100, 0x20):
+        if address not in list(range(0x00, 0x100, 0x20)):
             raise ArgRangeError('address')
 
         if len(data) != 0x20:
@@ -246,7 +255,7 @@ class StellarNet(object):
         :param address: Integer; the address of the string to get.
         """
 
-        if address not in range(0x00, 0x100, 0x20):
+        if address not in list(range(0x00, 0x100, 0x20)):
             raise ArgRangeError('address')
 
         payload = [0, address, 0]
@@ -292,15 +301,15 @@ class StellarNet(object):
         """Print device information."""
 
         print('--- Device Information')
-        print('idVendor:      {0:04X}'.format(self._device.idVendor))
-        print('idProduct:     {0:04X}'.format(self._device.idProduct))
-        print("iManufacturer: '{0}'".format(
-                usb.util.get_string(self._device, 100, self._device.iManufacturer)))
-        print("iProduct:      '{0}'".format(
-                usb.util.get_string(self._device, 100, self._device.iProduct)))
+        print(('idVendor:      {0:04X}'.format(self._device.idVendor)))
+        print(('idProduct:     {0:04X}'.format(self._device.idProduct)))
+        print(("iManufacturer: '{0}'".format(
+                usb.util.get_string(self._device, 100, self._device.iManufacturer))))
+        print(("iProduct:      '{0}'".format(
+                usb.util.get_string(self._device, 100, self._device.iProduct))))
         print('--- Stored Strings:')
         for address in range(0x00, 0x100, 0x20):
-            print(r"{0:02X} '{1}'".format(address, self.get_stored_string(address)))
+            print((r"{0:02X} '{1}'".format(address, self.get_stored_string(address))))
 
     def _init_config(self):
         # Set default configuration
@@ -412,7 +421,7 @@ class StellarNet(object):
         win_limit = win_span
         win_sum = sum(src[win_start:win_limit])
         dst[src_start] = win_sum/win_span
-        for i in xrange(src_start + 1, src_limit):
+        for i in range(src_start + 1, src_limit):
             win_sum += src[win_limit] - src[win_start]
             dst[i] = win_sum/win_span
             win_start += 1
@@ -423,7 +432,7 @@ class StellarNet(object):
         win_sum = src[src_start]
         dst[src_start] = src[src_start]
         j = src_start + 1
-        for i in xrange(j, half_span):
+        for i in range(j, half_span):
             win_sum += src[j + 0] + src[j + 1]
             j += 2
             dst[i] = win_sum/j
@@ -433,7 +442,7 @@ class StellarNet(object):
         win_sum = src[src_start]
         dst[src_start] = src[src_start]
         j = src_start - 1
-        for i in xrange(j, pixels - half_span - 1, -1):
+        for i in range(j, pixels - half_span - 1, -1):
             win_sum += src[j - 0] + src[j - 1]
             j -= 2
             dst[i] = win_sum/(src_start - j)
@@ -457,7 +466,9 @@ def _load_firmware(device, filename):
             count = int(line[1:1 + 2], 16)
             if count:
                 address = int(line[3:3 + 4], 16)
-                payload = bytearray(line[9:9 + count*2].decode("hex"))
+                #payload = bytearray(line[9:9 + count*2].decode("hex"))
+                # python3 needs the line below
+                payload = bytearray.fromhex(line[9:9 + count*2])
                 device.ctrl_transfer(
                     StellarNet._OUT_DEVICE, 0xA0, address, 0, payload)
 
@@ -552,7 +563,7 @@ def select_device(args, return_all=False):
 
     if len(devices) > 1:
         print('Multiple devices, select one with -d option:')
-        print('  {}'.format(', '.join([d.get_device_id() for d in devices])))
+        print(('  {}'.format(', '.join([d.get_device_id() for d in devices]))))
         sys.exit(0)
 
     return devices[0]
@@ -563,7 +574,7 @@ def _print_info(args):
     if args.list:
         print('Available devices:')
         devices = select_device(args, True)
-        print('  {}'.format(', '.join([d.get_device_id() for d in devices])))
+        print(('  {}'.format(', '.join([d.get_device_id() for d in devices]))))
     else:
         select_device(args).print_info()
     
@@ -580,7 +591,7 @@ def _plot_spectrum(args):
 
     cols = 80
     rows = int(cols*0.5)
-    table = [[' ' for x in xrange(cols)] for y in xrange(rows)]
+    table = [[' ' for x in range(cols)] for y in range(rows)]
 
     for i in range(pixel_count):
         x = int(cols*i/float(pixel_count))
@@ -593,10 +604,10 @@ def _plot_spectrum(args):
             int(round(device.compute_lambda(pixel_count - 1))))
     except  ArgumentError:
         x_label = '0-{} px'.format(pixel_count - 1)
-    print('Plot: x-axis: {}, y-axis: {}-{} counts'.format(
-            x_label, min_value, max_value))
+    print(('Plot: x-axis: {}, y-axis: {}-{} counts'.format(
+            x_label, min_value, max_value)))
 
-    for x in reversed(range(rows)):
+    for x in reversed(list(range(rows))):
         for y in range(cols):
             sys.stdout.write(table[x][y])
         sys.stdout.write('\n')
@@ -618,16 +629,16 @@ def _run_perf_test(args):
     device.set_config(**params)
     
     with Timer() as t:
-        for _ in xrange(args.repeats):
+        for _ in range(args.repeats):
             device.read_spectrum()
     
     print('Run parameters:')
     params = device.get_config()
     for k in _param_keys:
-        print("  {:<12} : {}".format(k, params[k]))
-    print('Repeats      {}'.format(args.repeats))
-    print('Total time   {:.3f} secs'.format(t.interval))
-    print('Average time {:.3f} secs'.format(t.interval/args.repeats))
+        print(("  {:<12} : {}".format(k, params[k])))
+    print(('Repeats      {}'.format(args.repeats)))
+    print(('Total time   {:.3f} secs'.format(t.interval)))
+    print(('Average time {:.3f} secs'.format(t.interval/args.repeats)))
     
 def _print_data(args):
     """Print scan data."""
@@ -636,9 +647,9 @@ def _print_data(args):
     params = _get_params(args)
     device.set_config(**params)
     
-    print('{{"data":[{}],"timestamp":{}}}'.format(
+    print(('{{"data":[{}],"timestamp":{}}}'.format(
         ','.join(map(str, device.read_spectrum())), 
-        int(time.time()*1000)))
+        int(time.time()*1000))))
                     
 def main(argv=None):
     """Excerise StellarNet spectrometer driver."""

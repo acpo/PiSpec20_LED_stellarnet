@@ -15,12 +15,6 @@
 #    limitations under the License.
 # 
 
-### edits December 2019 ECN
-#   edited to make Python 3 compatible
-#   line 55 new:  'return list(self._get_map().keys())'
-#   in python2 was:  'return self._get_map().keys()'
-###
-
 from flask import Flask
 from flask import jsonify
 from flask import make_response
@@ -53,8 +47,7 @@ class Spectrometers(object):
             abort(404)
 
     def get_device_ids(self):
-        return list(self._get_map().keys())
-        # in python2 was: return self._get_map().keys()
+        return self._get_map().keys()
 
 spectrometers = Spectrometers()
 

@@ -25,6 +25,7 @@ you would need to run as root to get USB access.
 - the rest of the files in PiSpec20_stellarnet should go into the same directory
 - Issue `sudo chmod -x spectroweb.py` in the project directory if on a Linux system 
 - on a Windows system you will need the free 'SWDrivers.zip' or 'SWDriver64.exe' from https://www.stellarnet.us/stellarnet-downloads  instead of the driver included in this package  
+- on Raspberry Pi remember to start the PWM daemon `sudo pigpiod`  
 - use the 'run_hidden' bash script to start the project without showing the command line.  From the command line issue `sudo chmod +x run_hidden` to make the bash script executable. On Windows a batch file would substitute the bash script.  
 ## Other Hardware  
 - a USB connected StellarNet spectrometer

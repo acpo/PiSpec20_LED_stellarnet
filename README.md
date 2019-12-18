@@ -11,7 +11,7 @@ I wrote this on a Raspberry Pi 3b+. For Windows or Mac you will need to make sma
 - pyusb 1.0.0a3  (Linux example:  sudo pip3 install pyusb==1.0.0a3)  this is version specific
 - screen (if you want to hide the background processes)  
 - numpy  
-- python-matplotlib  
+- python-matplotlib, recommended version: `sudo pip --no-cache-dir install matplotlit==2.0.2`     
 - pigpio
 - stuff usually automatically included in python
   - json  

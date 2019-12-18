@@ -52,7 +52,7 @@ def popupmsg(msg):  # warning popup boxes
 class Spec(tk.Tk):
     def __init__(self, ax, *args, **kwargs):
         global spectrumurl, configurl, data, x, incident, dark, IntTime, Averages, xmin, xmax, ymin, ymax, AbMode, LEDdutycycle, LEDfrequency, LEDpin, LEDstate
-        global monitorindex, monitor
+        global monitorindex, monitor, monitorwave
         spectrumurl, configurl, data, x, incident, dark, IntTime, Averages, xmin, xmax, ymin, ymax = stellarnet_init_mod.stellarnet_init()
 
         # set initial values in text boxes and spectrum window

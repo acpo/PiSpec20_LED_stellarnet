@@ -1,3 +1,4 @@
+* this branch works on Python 2.7 only *
 # PiSpec20_LED_stellarnet  
 A Python interface for StellarNet spectrometers designed to provide the functions of a Spectronic 20 spectrophotometer including an LED light source
 ## Project Goals and Motivations  
@@ -29,6 +30,21 @@ you would need to run as root to get USB access.
 ## Other Hardware  
 - a USB connected StellarNet spectrometer
 - a PWM circuit and LED.  The easiest way to do this would be on a Raspberry Pi since it has PWM pins ready to use.  Other prototyping platfoms (Arduino, etc.) could be adapted easily.  From a 'standard' PC, a PWM circuit can be attached by USB (Yocto, etc.).  An acceptable LED for "white light" illumination can cost as little as $2.00.
+## Supported Devices  
+### Directly tested 
+| Manufacturer  | Spectrometer  | Works ?       |  
+| ------------- | ------------- | ------------- |  
+| StellarNet    | Black Comet   |     yes       |
+
+### Should work with StellarNet driver  
+| Spectrometer | Linux driver | Windows driver |
+| ------------ | :----------: | :------------: |
+| Blue Wave | x | x |
+| Black Comet | x | x |
+| Silver Nova | x | x |
+| High Resolution | x | x |
+| Green Wave | x | x |
+
 ## How to Help  
 I don't write in Python for a living, nor particularly do a lot of programming. And it shows in the code.  
 If you wish to contribute please contact me.

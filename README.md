@@ -1,4 +1,4 @@
-* this branch works on Python 2.7 only *
+*this branch works on Python 2.7 only *
 # PiSpec20_LED_stellarnet  
 A Python interface for StellarNet spectrometers designed to provide the functions of a Spectronic 20 spectrophotometer including an LED light source
 ## Project Goals and Motivations  

@@ -39,7 +39,8 @@ you would need to run as root to get USB access.
 | Ocean Insight | USB 2000      |     yes       |  
 
 ### Should work with SeaBreeze (Ocean Insight products)  
-| Spectrometer | cseabreeze | pyseabreeze|
+| Spectrometer | cseabreeze | pyseabreeze|  
+| ------------ | ---------- | -----------|  
 |HR2000 |x | x |
 |HR2000PLUS |x | x |
 |HR4000 |x | x |

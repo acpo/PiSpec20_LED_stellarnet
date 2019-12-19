@@ -29,7 +29,17 @@ you would need to run as root to get USB access.
 - use the 'run_hidden' bash script to start the project without showing the command line.  From the command line issue `sudo chmod +x run_hidden` to make the bash script executable. On Windows a batch file would substitute the bash script.  
 ## Other Hardware  
 - a USB connected StellarNet spectrometer
-- a PWM circuit and LED.  The easiest way to do this would be on a Raspberry Pi since it has PWM pins ready to use.  Other prototyping platfoms (Arduino, etc.) could be adapted easily.  From a 'standard' PC, a PWM circuit can be attached by USB (Yocto, etc.).  An acceptable LED for "white light" illumination can cost as little as $2.00.
+- a PWM circuit and LED.  The easiest way to do this would be on a Raspberry Pi since it has PWM pins ready to use.  Other prototyping platfoms (Arduino, etc.) could be adapted easily.  From a 'standard' PC, a PWM circuit can be attached by USB (Yocto, etc.).  An acceptable LED for "white light" illumination can cost as little as $2.00.  
+## Supported Devices  
+### Directly tested 
+| Manufacturer  | Spectrometer  | Works ?       |  
+| ------------- | ------------- | ------------- |  
+| Ocean Insight | HR 4000       |     yes       |  
+| Ocean Insight | HR 2000 plus  |     yes       |  
+| Ocean Insight | USB 2000      |     yes       |  
+
+### Should work (supported by device libraries)  
+
 ## How to Help  
 I don't write in Python for a living, nor particularly do a lot of programming. And it shows in the code.  
 If you wish to contribute please contact me.

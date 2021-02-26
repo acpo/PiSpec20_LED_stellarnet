@@ -1,6 +1,7 @@
 *this branch works on Python 2.7 only*
 # PiSpec20_LED_stellarnet  
-A Python interface for StellarNet spectrometers designed to provide the functions of a Spectronic 20 spectrophotometer including an LED light source
+A Python interface for StellarNet spectrometers designed to provide the functions of a Spectronic 20 spectrophotometer including an LED light source  
+**!! The file `stellarnet.py` was removed at the request of StellarNet.  To get this file you will need to complete a Software License Agreement with them (https://www.stellarnet.us/wp-content/uploads/StellarNet-SLA.pdf).  I am working on getting an acceptable version posted here that will allow you work with this project and not violate the license.**  
 ## Project Goals and Motivations  
 The goal of this project was to replace the old Spec 20s in our teaching laboratories with equivalent functionality in modern equipment. Choices of hardware and software were driven largely by familiarity. The choice of the Raspberry Pi was to make an effectively disposable computer. I picked Python 3.x (works on Python 2.7 also) for simplicity in migrating to different hardware. What I created here is a simple frontend for the spectrometer suitable for use by relatively untrained undergraduate students.
 ## Project Audience  

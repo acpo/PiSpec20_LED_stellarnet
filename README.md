@@ -9,7 +9,9 @@ The project was written to support undergraduate laboratories, so really this re
 The *master branch* works on newer (as of May 2024) Python 3.x versions. Separate branches for Python 2.7 and older 3.x versions are available. I wrote this on a Raspberry Pi 3b+. The master branch was tested on Python 3.9 and 3.11 with Raspbian OS *Bullseye* and *Bookworm*. The *Bookworm* distribution is slow on a 3b+, and not entirely recommended. 
 For Windows or Mac you will need to make small changes to the code to deal with OS peculiarities. You will need to possess a Stellarnet spectrometer.  The LED requires building a small circuit to allow pulse width modulation of the LED for brightness control.  The schematic is below.  I built this on a Pi-topPROTO board which made it even easier.  
 ![schematic of PWM circuit for Raspberry Pi](https://github.com/acpo/PiSpec20_LED_stellarnet/blob/master/LEDCIRCUIT.png)
-## Libraries  
+### Libraries  
+For Raspbian OS, the `apt-get` package manager was used for sytem packages.  For other Linux types, the appropriate package manager (*e.g.*, yum for CentOS) will depend on your Linux distribution.   The `pip` or `pip3` (depending on your Python set-up) get the Python packages.  Note that on Raspbian starting with the 'Bookwork' distribution, `pip` installs must be to a virtual environment to obey the stricter versioning rules.  
+For Windows and MacOS, one would typically use `pip` to install Python libraries.  Help with pip is available at https://packaging.python.org/tutorials/installing-packages/  
 - pyusb 1.2.1  (Linux example:  sudo pip3 install pyusb==1.2.1)  this is version specific, so `pip` is appropriate especially for *venv*
 - libusb-1.0-0-dev
 - numpy 1.24.2numpy  
@@ -17,13 +19,13 @@ For Windows or Mac you will need to make small changes to the code to deal with 
 - matplotlib  
 - pigpio  (for Raspberry Pi control of the LED)
  
-## Files to install  
+### Files to install  
 - Stellarnet has dramatically simplified the installation process since 2019, so there is a lot less for the user to manage.
 - the rest of the files in PiSpec20_stellarnet should go into the same directory
 - on a Windows system you will need the free 'SWDrivers.zip' or 'SWDriver64.exe' from https://www.stellarnet.us/stellarnet-downloads  instead of the driver included in this package  
 - on Raspberry Pi remember to start the PWM daemon `sudo pigpiod`  
 - use the 'run_hidden' bash script to start the project without showing the command line.  From the command line issue `sudo chmod +x run_hidden` to make the bash script executable. On Windows a batch file would substitute the bash script.  
-## Other Hardware  
+### Other Hardware  
 - a USB connected StellarNet spectrometer
 - a PWM circuit and LED.  The easiest way to do this would be on a Raspberry Pi since it has PWM pins ready to use.  Other prototyping platfoms (Arduino, etc.) could be adapted easily.  From a 'standard' PC, a PWM circuit can be attached by USB (Yocto, etc.).  An acceptable LED for "white light" illumination can cost as little as $2.00.  
 ## Supported Devices  

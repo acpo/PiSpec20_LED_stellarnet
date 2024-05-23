@@ -35,7 +35,7 @@ For Windows and MacOS, one would typically use `pip` to install Python libraries
 6) `sudo apt-get install python3-pil.imagetk`  
 7) `sudo systemctl enable pigpiod`  this makes the GPIO always available.  One time use would be `sudo pigpiod`.
 8) copy this repository
-9) `sudo cp 99-local.rules /etc/udev/rules.d/99-local.rules
+9) `sudo cp 99-local.rules /etc/udev/rules.d/99-local.rules`  
 10) copy StellarNet drivers to the PiSpec20_LED_stellarnet folder
 11) `sudo chmod +x run_hidden` to make the bash script executable.  A batch file would substitute the bash script on Windows.  
 12) reboot

@@ -1,0 +1,5 @@
+#!/bin/bash
+cd ~/PiSpec20_LED_stellarnet-master/PiSpec20_LED_stellarnet/
+screen -dm python spectroweb.py
+screen -dm python stellarnet_spec_LED.py
+exit
